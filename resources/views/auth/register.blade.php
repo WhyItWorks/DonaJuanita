@@ -1,77 +1,70 @@
-@extends('layouts.app')
+@extends('layouts.app') @section('body','login-page sidebar-collapse') @section('content')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+<div class="page-header" filter-color="black">
+	<div class="page-header-image" style="background-image:url( {{ asset('img/login.jpg') }} )"></div>
+	<div class="container">
+		<div class="col-md-4 content-center">
+			<div class="card card-login card-plain pb-3">
+				<form class="form-horizontal mt-5" method="POST" action="{{ route('register') }}">
+					{{ csrf_field() }}
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+					<div class="content">
+						<div class="input-group form-group-no-border input-lg ">
+							<span class="input-group-addon ">
+								<i class="now-ui-icons users_circle-08"></i>
+							</span>
+							<input id="name" type="text " class="form-control " value="{{ old('name','') }}" name="name" placeholder="Nombre " required>
+						</div>
+						<div class="input-group form-group-no-border input-lg ">
+							<span class="input-group-addon ">
+								<i class="now-ui-icons ui-1_email-85"></i>
+							</span>
+							<input id="email" class="form-control " placeholder="Email " type="email" name="email" value="{{ old( 'email','') }}" required>
+						</div>
+						<div class="input-group form-group-no-border input-lg ">
+							<span class="input-group-addon ">
+								<i class="now-ui-icons tech_mobile"></i>
+							</span>
+							<input id="phone" class="form-control " placeholder="Número telefónico" type="phone" name="phone" value="{{ old( 'phone','') }}"
+							 required>
+						</div>
+						<div class="input-group form-group-no-border input-lg ">
+							<span class="input-group-addon ">
+								<i class="now-ui-icons text_caps-small"></i>
+							</span>
+							<input id="rut" class="form-control " placeholder="Rut" type="text" name="rut" value="{{ old( 'rut','') }}" required>
+						</div>
+						<div class="input-group form-group-no-border input-lg ">
+							<span class="input-group-addon ">
+								<i class="now-ui-icons ui-1_lock-circle-open "></i>
+							</span>
+							<input id="password" type="password" class="form-control " placeholder="Contraseña " name="password" required>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+						</div>
+						<div class="input-group form-group-no-border input-lg ">
+							<span class="input-group-addon ">
+								<i class="now-ui-icons ui-1_lock-circle-open "></i>
+							</span>
+							<input id="password-confirm" type="password" class="form-control " placeholder="Confirmar contraseña " name="password_confirmation"
+							 required>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+						</div>
+					</div>
+					<div class="footer text-center ">
+						<button type="submit" class="btn btn-primary btn-round btn-lg btn-block ">
+							Crear nueva cuenta
+						</button>
+					</div>
+					<div class="pull-left ">
+						<h6>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+							<a href="{{ route( 'login') }} " class="link ">iniciar sesión</a>
+						</h6>
+					</div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 @endsection
