@@ -5582,18 +5582,6 @@ Created using IcoMoon - icomoon.io
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.page-header[filter-color="black"] {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5b3939+0,000000+100&0.65+0,0+100 */
-    background: -moz-linear-gradient(top, rgba(91, 57, 57, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(91, 57, 57, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(91, 57, 57, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a65b3939', endColorstr='#00000000', GradientType=0);
-    /* IE6-9 */
-}
-
 .page-header[filter-color="orange"] {
     background: rgba(44, 44, 44, 0.2);
     /* For browsers that do not support gradients */
@@ -6038,7 +6026,7 @@ Created using IcoMoon - icomoon.io
         /* For Firefox 3.6 to 15 */
         background: linear-gradient(#f96332 0%, #000 80%);
         /* Standard syntax (must be last) */
-        opacity: 0.76;
+        opacity: 1.76;
         filter: alpha(opacity=76);
         display: block;
         content: "";

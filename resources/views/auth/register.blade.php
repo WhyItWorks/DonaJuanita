@@ -1,70 +1,100 @@
-@extends('layouts.app') @section('body','login-page sidebar-collapse') @section('content')
+@extends('layouts.app') @section('styles')
 
-<div class="page-header" filter-color="black">
+<link rel="stylesheet" href="{{ asset('css/auth/form-elements.css') }}">
+<link rel="stylesheet" href="{{ asset('css/auth/style.css') }}"> @endsection @section('body','login-page sidebar-collapse') @section('content')
+
+<div class="page-header">
 	<div class="page-header-image" style="background-image:url( {{ asset('img/login.jpg') }} )"></div>
-	<div class="container">
-		<div class="col-md-4 content-center">
-			<div class="card card-login card-plain pb-3">
-				<form class="form-horizontal mt-5" method="POST" action="{{ route('register') }}">
-					{{ csrf_field() }}
+	<!-- Top content -->
+	<div class="py-5 cont">
+		<div class="container mt-4">
+			<div class="d-flex justify-content-center">
+				<div class="row col-8">
+					<div class="w-100 form-box">
 
-					<div class="content">
-						<div class="input-group form-group-no-border input-lg ">
-							<span class="input-group-addon ">
-								<i class="now-ui-icons users_circle-08"></i>
-							</span>
-							<input id="name" type="text " class="form-control " value="{{ old('name','') }}" name="name" placeholder="Nombre " required>
-						</div>
-						<div class="input-group form-group-no-border input-lg ">
-							<span class="input-group-addon ">
-								<i class="now-ui-icons ui-1_email-85"></i>
-							</span>
-							<input id="email" class="form-control " placeholder="Email " type="email" name="email" value="{{ old( 'email','') }}" required>
-						</div>
-						<div class="input-group form-group-no-border input-lg ">
-							<span class="input-group-addon ">
-								<i class="now-ui-icons tech_mobile"></i>
-							</span>
-							<input id="phone" class="form-control " placeholder="Número telefónico" type="phone" name="phone" value="{{ old( 'phone','') }}"
-							 required>
-						</div>
-						<div class="input-group form-group-no-border input-lg ">
-							<span class="input-group-addon ">
-								<i class="now-ui-icons text_caps-small"></i>
-							</span>
-							<input id="rut" class="form-control " placeholder="Rut" type="text" name="rut" value="{{ old( 'rut','') }}" required>
-						</div>
-						<div class="input-group form-group-no-border input-lg ">
-							<span class="input-group-addon ">
-								<i class="now-ui-icons ui-1_lock-circle-open "></i>
-							</span>
-							<input id="password" type="password" class="form-control " placeholder="Contraseña " name="password" required>
+						<form role="form" method="POST" action="{{ route('register') }}" class="f1">
+							{{ csrf_field() }}
+							<h3>Unete a nosotros</h3>
+							<p>Llena los campos para comenzar a reservar</p>
+							<div class="f1-steps">
+								<div class="f1-progress">
+									<div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
+								</div>
+								<div class="f1-step active">
+									<div class="f1-step-icon">
+										<i class="fa fa-user"></i>
+									</div>
+									<p>Personal</p>
+								</div>
+								<div class="f1-step">
+									<div class="f1-step-icon">
+										<i class="fa fa-key"></i>
+									</div>
+									<p>Cuenta</p>
+								</div>
+								<div class="f1-step">
+									<div class="f1-step-icon">
+										<i class="fa fa-check"></i>
+									</div>
 
-						</div>
-						<div class="input-group form-group-no-border input-lg ">
-							<span class="input-group-addon ">
-								<i class="now-ui-icons ui-1_lock-circle-open "></i>
-							</span>
-							<input id="password-confirm" type="password" class="form-control " placeholder="Confirmar contraseña " name="password_confirmation"
-							 required>
+								</div>
 
-						</div>
+							</div>
+
+							<fieldset>
+								<h4>Cuentanos sobre ti:</h4>
+								<div class="form-group">
+									<label class="sr-only" for="name">Nombre</label>
+									<input id="name" class="form-control" placeholder="Nombre completo" type="text" name="name" value="{{ old('name') }}" required>
+
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="rut">Rut</label>
+									<input id="rut" class="form-control" placeholder="Rut" type="text" name="rut" value="{{ old('rut') }}" required>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="phone">Número</label>
+									<input id="phone" class="form-control" placeholder="Número telefónico" type="text" name="phone" value="{{ old('phone') }}"
+									 required>
+								</div>
+								<div class="f1-buttons">
+									<button type="button" class="btn btn-next">Continuar</button>
+								</div>
+							</fieldset>
+
+							<fieldset>
+								<h4>Configura tu cuenta:</h4>
+								<div class="form-group">
+									<label class="sr-only" for="email">Email</label>
+									<input id="email" class="form-control" placeholder="Correo" type="text" name="email" value="{{ old('email') }}">
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="password">Contraseña</label>
+									<input id="password" class="form-control" placeholder="Contraseña" type="password" name="password">
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="f1-repeat-password">Repetir contraseña</label>
+									<input placeholder="Confirmar contraseña" id="password-confirm" type="password" class="form-control" name="password_confirmation"
+									 required />
+								</div>
+								<div class="f1-buttons">
+									<button type="button" class="btn btn-previous">Volver</button>
+									<button type="submit" class="btn btn-submit">Crear cuenta</button>
+
+								</div>
+							</fieldset>
+
+
+
+						</form>
 					</div>
-					<div class="footer text-center ">
-						<button type="submit" class="btn btn-primary btn-round btn-lg btn-block ">
-							Crear nueva cuenta
-						</button>
-					</div>
-					<div class="pull-left ">
-						<h6>
-
-							<a href="{{ route( 'login') }} " class="link ">iniciar sesión</a>
-						</h6>
-					</div>
-
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+@endsection @section('scripts')
+<script src="{{ asset('js/auth/jquery.backstretch.min.js') }}"></script>
+<script src="{{ asset('js/auth/scripts.js') }}"></script>
 @endsection

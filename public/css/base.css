@@ -4,3 +4,34 @@
     width: 30px !important;
     height: 30px !important;
 }
+
+.page-header[filter-color="black"] {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5b3939+0,000000+100&0.65+0,0+100 */
+    background: -moz-linear-gradient(top, rgba(91, 57, 57, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(91, 57, 57, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(91, 57, 57, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a65b3939', endColorstr='#00000000', GradientType=0);
+    /* IE6-9 */
+}
+
+.page-header[filter-type="toasted"] {
+    position: relative;
+    -webkit-filter: contrast(120%) saturate(125%);
+    filter: contrast(120%) saturate(125%);
+}
+
+.page-header[filter-color="toasted"]::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    background: rgba(127, 187, 227, 0.2);
+}

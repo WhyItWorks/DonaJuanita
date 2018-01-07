@@ -46,12 +46,36 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
+    {        
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+            'phone' =>  'required|string|min:8',
+            'rut' =>  'required|string|min:8',
+        ],
+        [
+            'name.required' => 'El campo NOMBRE es obligatorio',
+            'name.string' => 'Ingrese un NOMBRE valido',            
+
+            'email.required' => 'El campo CORREO es obligatorio',
+            'email.string' => 'Ingrese un CORREO valido',            
+            'email.unique' => 'Ya existe una cuenta vinculada a este CORREO',
+
+            'password.required' => 'El campo CONTRASEÑA es obligatorio',
+            'password.string' => 'Ingrese una CONTRASEÑA valida',
+            'password.min' => 'Ingrese una CONTRASEÑA con a lo menos 8 caracteres',
+            'password.confirmed' => 'Las CONTRASEÑAS no coinciden',
+
+            'phone.required' => 'El campo TELÉFONO es obligatorio',
+            'phone.string' => 'Ingrese un TELÉFONO valido',
+            'phone.min' => 'Ingrese un TELÉFONO valido',
+
+            'rut.required' => 'El campo RUT es obligatorio',
+            'rut.string' => 'Ingrese un RUT valido',
+            'rut.min' => 'Ingrese un RUT valido',
+        ]
+    );
     }
 
     /**
@@ -61,11 +85,14 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {                
         return User::create([
-            'name' => $data['name'],
+            'name' => $data['name'],            
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'phone' => $data['phone'],
+            'rut' => $data['rut'],
+            'password' => bcrypt($data['password'])
         ]);
+        
     }
 }
