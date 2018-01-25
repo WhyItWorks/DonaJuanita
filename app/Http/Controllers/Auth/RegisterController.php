@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use Illuminate\Http\Request as Req;
+
 class RegisterController extends Controller
 {
     /*
@@ -94,5 +96,13 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password'])
         ]);
         
+    }
+    public function showRegistrationForm(Req $request)
+    {
+        $name = $request->input('name');
+        $phone = $request->input('phone');
+        $email = $request->input('email');
+        
+        return view('auth.register')->with(compact('name','phone','email'));
     }
 }

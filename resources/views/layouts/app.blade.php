@@ -1,154 +1,138 @@
 <!DOCTYPE html>
 <html lang=" {{ app()->getLocale() }}">
-
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'
-	/>
-
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>@yield('title')</title>
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-
-
 	<title>{{ config('app.name', 'Laravel') }}</title>
-
-	<!-- Styles -->
-	<!--     Fonts and icons     -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-	<!-- CSS Files -->
-	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
-	<link href="{{ asset('css/now-ui-kit.css?v=1.1.0') }}" rel="stylesheet" />
-
-	<!-- If you need it -->
-	@yield('styles')
-	<!-- Base -->
+	<!--           STYLES           -->
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Bootstrap core CSS -->
+	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
+	<!-- toast alerts -->
+	<link href="{{ asset('css/jquery.toast.css') }}" rel="stylesheet">
+	<!-- Bootstrap social gh -->
+	<link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet">
+	<!-- Custom CSS -->
 	<link href="{{ asset('css/base.css') }}" rel="stylesheet" />
-
+	<!-- If you need more -->
+	@yield('styles')
 </head>
-
-<body class=" @yield('body') ">
-
-	<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent" color-on-scroll="400">
+<body class="  @yield('body') ">
+	@yield('header')
+	<!--Navbar-->
+	<nav class="principal_nav navbar navbar-expand-lg scrolling-navbar sticky-top @yield('navbar-color','bg-cinder navbar-dark')">
 		<div class="container">
-
-			<div class="navbar-translate">
-
-				<a class="navbar-brand" href="{{ url('/') }}">
-					<img src="{{ asset('img/leftHorn.png') }}" class="d-inline-block align-top nav__logo"> {{ config('app.name', 'Laravel') }}
-					<img src="{{ asset('img/rightHorn.png') }}" class="d-inline-block align-top nav__logo">
+			<a class="navbar-brand" href="{{ url('/') }}">
+					<img src="../Img/leftHorn.png" class="d-inline-block align-top nav__logo" alt="Imagen referencial al logo de la empresa">  {{ config('app.name') }}
+					<img src="../Img/rightHorn.png" class="d-inline-block align-top nav__logo" alt="Imagen referencial al logo de la empresa">
 				</a>
-
-
-				<button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index"
-				 aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-bar bar1"></span>
-					<span class="navbar-toggler-bar bar2"></span>
-					<span class="navbar-toggler-bar bar3"></span>
+			<button class="principal-navbar-button navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
 				</button>
-			</div>
-			<div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="">
-				<ul class="navbar-nav">
-					@guest
-					<li class="dropdown nav-item">
-						<a class="dropdown-toggle nav-link" data-toggle="dropdown">Iniciar sesión
-							<b class="caret"></b>
-						</a>
-						<ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
-							<li>
-								<div class="row">
-									<div class="col-md-12">
-										<form class="form" role="form" method="post" action="{{ route('login') }}" id="login-nav">
-											{{ csrf_field() }}
-											<div class="form-group">
-												<label class="sr-only " for="emailInput ">Correo</label>
-												<input type="email" class="form-control " id="email" name="email" placeholder="Correo" required>
-											</div>
-											<div class="form-group">
-												<label class="sr-only" for="password">Contraseña</label>
-												<input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
-											</div>
-											<div class="checkbox">
-												<input id="remember" type="checkbox">
-												<label for="remember">
-													No cerrar sesión
-												</label>
-											</div>
-
-											<div class="form-group ">
-												<button type="submit" class="btn btn-success w-100">Iniciar sesión</button>
-											</div>
-
-										</form>
-
-									</div>
-								</div>
-							</li>
-						</ul>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto text-center">
+					<li class="nav-item active">
+						<a class="nav-link waves-effect waves-light" href="#">Inicio
+								<span class="sr-only">(current)</span>
+							</a>
 					</li>
-
+					<li class="nav-item">
+						<a class="nav-link waves-effect waves-light" href="#">Sobre nosotros</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link waves-effect waves-light" href="#">Contactanos</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav ml-auto  text-center">
+					@guest
+					<li class="nav-item">
+						<a type="button" class="nav-link waves-effect waves-light" data-toggle="modal" data-target="#modalLogin">Iniciar sesión</a>
+					</li>
+					{{--
+					<li id="login-md" class="nav-item ">
+						<a href="{{ route( 'login') }} " class="nav-link waves-effect waves-light ">Iniciar sesión</a>
+					</li> --}}
 					<li class="nav-item ">
-						<a href="{{ route( 'register') }} " class="nav-link ">Registro</a>
+						<a href="{{ route( 'register') }} " class="nav-link waves-effect waves-light">Registro</a>
 					</li>
 					@else
-
-					<li class="nav-item dropdown">
-						<a class="dropdown-toggle nav-link " data-toggle="dropdown" role="button " aria-expanded="false" aria-haspopup="true">
-							{{ Auth::user()->name }}
-							<span class="caret "></span>
-						</a>
-
-
-						<ul class="dropdown-menu ">
-							<li class="text-center ">
-								<a href="{{ route( 'logout') }}" class="nav-link bg-success " onclick="event.preventDefault(); document.getElementById('logout-form').submit(); ">
+					<li class="nav-item btn-group mr-auto ml-auto">
+						<a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button " aria-expanded="false"
+						 aria-haspopup="true">
+								{{ Auth::user()->name }}
+								<span class="caret "></span>
+							</a>
+						<div class="dropdown-menu dropdown-primary " aria-labelledby="navbarDropdownMenuLink">
+							<a href="{{ route( 'logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit(); ">
 									Cerrar sesión
 								</a>
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-									{{ csrf_field() }}
-								</form>
-							</li>
-						</ul>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								{{ csrf_field() }}
+							</form>
+						</div>
 					</li>
 					@endguest
-					<li class="nav-item ">
-						<a class="nav-link " rel="tooltip " title="Danos like en Facebook " data-placement="bottom " href="# " target="_blank ">
-							<i class="fa fa-facebook-square "></i>
-							<p class="d-lg-none d-xl-none ">Facebook</p>
-						</a>
-					</li>
-					<li class="nav-item ">
-						<a class="nav-link " rel="tooltip " title="Siguenos en Instragram " data-placement="bottom " href="# " target="_blank ">
-							<i class="fa fa-instagram "></i>
-							<p class="d-lg-none d-xl-none ">Instagram</p>
-						</a>
-					</li>
 				</ul>
 			</div>
 		</div>
-
 	</nav>
-
+	<!--/.Navbar-->
+	<!--Login Modal-->
+	<div class="modal fade bg-lochmara" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog cascading-modal modal-sm" role="document">
+			<div class="modal-content">
+				<!--Body-->
+				<div class="modal-body text-center mb-1">
+					<h2 class="mt-1 mb-2">Inicia sesión</h2>
+					<br>
+					<form id="login-form" role="form" method="post" action="{{ route( 'login') }} ">
+						{{ csrf_field() }}
+						<div class="md-form ">
+							<input id="email" type="email" class="form-control ml-0 text-center" type="text" name="email" required>
+							<label for="email" class="ml-0">Correo</label>
+						</div>
+						<div class="md-form ">
+							<input id="password" type="password" class="form-control ml-0 text-center" type="text" name="password" required>
+							<label for="password" class="ml-0">Contraseña</label>
+						</div>
+						<div class="text-center ">
+							<button type="submit" class="btn bg-tenne waves-effect waves-light">Ingresar
+								<i class="fa fa-sign-in ml-1 "></i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/.Login Modal-->
 	@yield('content')
 
-	<!-- Scripts -->
-	<script src="{{ asset( 'js/core/jquery.3.2.1.min.js') }} " type="text/javascript "></script>
-	<script src="{{ asset( 'js/core/popper.min.js') }} " type="text/javascript "></script>
-	<script src="{{ asset( 'js/core/bootstrap.min.js') }} " type="text/javascript "></script>
-	<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-	<script src="{{ asset( 'js/plugins/bootstrap-switch.js') }} "></script>
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-	<script src="{{ asset( 'js/plugins/nouislider.min.js') }} " type="text/javascript "></script>
-	<!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-	<script src="{{ asset( 'js/plugins/bootstrap-datepicker.js') }} " type="text/javascript "></script>
-	<!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-	<script src="{{ asset( 'js/now-ui-kit.js?v=1.1.0') }} " type="text/javascript "></script>
-	<!-- If you need it -->
+	
+
+
+	<!--           SCRIPTS           -->
+	<!-- JQuery -->
+	<script type="text/javascript " src="js/jquery-3.2.1.min.js "></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript " src="js/popper.min.js "></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript " src="js/bootstrap.min.js "></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript " src="js/mdb.min.js "></script>
+	<!-- Jquery toast -->
+	<script type="text/javascript " src="js/jquery.toast.js "></script>
+	<!-- Custom JS -->
+	<script src="{{ asset( 'js/base.js') }} " type="text/javascript "></script> 
+	<!-- If you need more -->
 	@yield('scripts')
-	<!-- Base -->
-	<script src="{{ asset( 'js/base.js') }} " type="text/javascript "></script>
-
 </body>
-
 </html>

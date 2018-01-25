@@ -1,37 +1,191 @@
-/* Nav bar */
+      html,
+      body,
+      .view {
+          height: 100%;
+          overflow-x: hidden;
+      }
+      /* Custom Colors */
 
-.nav__logo {
-    width: 30px !important;
-    height: 30px !important;
-}
+      .bg-barossa {
+          background-color: #442A36 !important;
+      }
 
-.page-header[filter-color="black"] {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5b3939+0,000000+100&0.65+0,0+100 */
-    background: -moz-linear-gradient(top, rgba(91, 57, 57, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(91, 57, 57, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(91, 57, 57, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a65b3939', endColorstr='#00000000', GradientType=0);
-    /* IE6-9 */
-}
+      .bg-cinder {
+          background-color: #2A2C2D;
+      }
 
-.page-header[filter-type="toasted"] {
-    position: relative;
-    -webkit-filter: contrast(120%) saturate(125%);
-    filter: contrast(120%) saturate(125%);
-}
+      .bg-lochmara {
+          background-color: rgba(45, 124, 214, 0.652);
+      }
 
-.page-header[filter-color="toasted"]::before {
-    content: "";
-    display: block;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    pointer-events: none;
-    mix-blend-mode: overlay;
-    background: rgba(127, 187, 227, 0.2);
-}
+      .bg-tenne {
+          background-color: #cb4b06;
+      }
+      /* .purple-gradient {
+          background: linear-gradient(40deg, #9021b5b6, #503650ea);
+      } */
+      /* /.Custom Colors */
+      /* Navbar */
+
+      .nav__logo {
+          width: 30px !important;
+          height: 30px !important;
+      }
+
+      .navbar .btn-group .dropdown-menu a:hover {
+          color: #000 !important;
+      }
+
+      .navbar .btn-group .dropdown-menu a:active {
+          color: #fff !important;
+      }
+
+      .flex-center {
+          color: #fff;
+      }
+      /* /.Navbar */
+      /* Header */
+
+      .header-image {
+          overflow: hidden;
+          background-repeat: no-repeat !important;
+          background-attachment: fixed !important;
+          background-size: cover !important;
+          position: relative;
+      }
+
+      .header-image::before {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: #000;
+          opacity: 0.2;
+          width: 100%;
+          height: 100%;
+      }
+
+      .header-content {
+          position: absolute;
+          width: 100%;
+      }
+
+      .header-register {
+          -webkit-box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
+          box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
+      }
+      /* Header inputs */
+
+      .header-content label {
+          color: white !important;
+      }
+
+      .header-content input {
+          color: white !important;
+      }
+
+      .header-content input[type=email]:focus:not([readonly])+label {
+          color: white;
+      }
+
+      .header-content input[type=email]:focus:not([readonly]) {
+          border-bottom: 1px solid rgb(255, 255, 255);
+          box-shadow: 0 1px 0 0 rgb(255, 255, 255);
+      }
+
+      .header-content input[type=text]:focus:not([readonly])+label {
+          color: white;
+      }
+
+      .header-content input[type=text]:focus:not([readonly]) {
+          border-bottom: 1px solid rgb(255, 255, 255);
+          box-shadow: 0 1px 0 0 rgb(255, 255, 255);
+      }
+      /* /.Header inputs */
+      /* /.Header */
+      /* Gallery */
+
+      .container.gallery-container {
+          background-color: #fff;
+          color: #35373a;
+          min-height: 100vh;
+          border-radius: 20px;
+      }
+
+      .tz-gallery {
+          padding: 40px;
+      }
+
+      .tz-gallery .lightbox img {
+          width: 100%;
+          margin-bottom: 30px;
+          transition: 0.2s ease-in-out;
+          box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      .tz-gallery .lightbox img:hover {
+          transform: scale(1.05);
+          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .tz-gallery img {
+          border-radius: 4px;
+      }
+
+      .baguetteBox-button {
+          background-color: transparent !important;
+      }
+
+      @media(max-width: 768px) {
+          body {
+              padding: 0;
+          }
+          .container.gallery-container {
+              border-radius: 0;
+          }
+      }
+      /* /.Gallery */
+      /* General content */
+
+      .img-thumbnail {
+          zoom: 2;
+          display: block;
+          margin: auto;
+          height: auto;
+          max-height: 100%;
+          width: auto;
+          max-width: 100%;
+          background-color: #f9643269;
+          -webkit-box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
+          box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
+      }
+
+      .blockquote {
+          border-left: none;
+          border: 1px solid #888;
+          padding: 20px;
+          font-size: 1.1em;
+          line-height: 1.8;
+      }
+
+      .blockquote.blockquote-primary {
+          border-color: #f96332;
+          color: #f96332;
+      }
+      /* /.General content */
+      /* Footer inputs */
+
+      footer textarea[type=text]:focus:not([readonly])+label,
+      footer input[type=email]:focus:not([readonly])+label,
+      footer input[type=text]:focus:not([readonly])+label {
+          color: #00C851;
+      }
+
+      footer textarea[type=text]:focus:not([readonly]),
+      footer input[type=email]:focus:not([readonly]),
+      footer input[type=text]:focus:not([readonly]) {
+          border-bottom: 1px solid rgb(0, 200, 81);
+          box-shadow: 0 1px 0 0 rgb(0, 200, 81);
+      }
+      /* /.Footer */
