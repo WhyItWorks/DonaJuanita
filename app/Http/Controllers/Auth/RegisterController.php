@@ -6,7 +6,6 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
 use Illuminate\Http\Request as Req;
 
 class RegisterController extends Controller
@@ -29,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -38,44 +37,46 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest');        
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array  $ssdata
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {        
         return Validator::make($data, [
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name' => 'required|string|min:3',
+            'email' => 'required|string|email|unique:users',           
             'phone' =>  'required|string|min:8',
-            'rut' =>  'required|string|min:8',
+            // 'rut' =>  'required|string|min:8',
+            'password' => 'required|string|min:6|confirmed'
         ],
         [
-            'name.required' => 'El campo NOMBRE es obligatorio',
-            'name.string' => 'Ingrese un NOMBRE valido',            
+            'name.required' => 'name/ Este campo es obligatorio',
+            'name.string' => 'name/ Ingrese un nombre valido',            
+            'name.min' => 'name/ Ingrese un nombre valido',
 
-            'email.required' => 'El campo CORREO es obligatorio',
-            'email.string' => 'Ingrese un CORREO valido',            
-            'email.unique' => 'Ya existe una cuenta vinculada a este CORREO',
+            'email.required' => 'email/ Este campo es obligatorio',
+            'email.string' => 'email/ Ingrese un correo valido',
+            'email.email' => 'email/ Ingrese un correo valido',                        
+            'email.unique' => 'email/ Dirección de correo en uso',
+            
+            'phone.required' => 'phone/ Este campo es obligatorio',
+            'phone.string' => 'phone/ Ingrese un número de telefónico valido',
+            'phone.min' => 'phone/ Ingrese un número de telefónico valido',
 
-            'password.required' => 'El campo CONTRASEÑA es obligatorio',
-            'password.string' => 'Ingrese una CONTRASEÑA valida',
-            'password.min' => 'Ingrese una CONTRASEÑA con a lo menos 8 caracteres',
-            'password.confirmed' => 'Las CONTRASEÑAS no coinciden',
+            // 'rut.required' => 'El campo RUT es obligatorio',
+            // 'rut.string' => 'Ingrese un RUT valido',
+            // 'rut.min' => 'Ingrese un RUT valido',
 
-            'phone.required' => 'El campo TELÉFONO es obligatorio',
-            'phone.string' => 'Ingrese un TELÉFONO valido',
-            'phone.min' => 'Ingrese un TELÉFONO valido',
-
-            'rut.required' => 'El campo RUT es obligatorio',
-            'rut.string' => 'Ingrese un RUT valido',
-            'rut.min' => 'Ingrese un RUT valido',
+            'password.required' => 'password/ Este campo es obligatorio',
+            'password.string' => 'password/ Ingrese una contraseña valida',
+            'password.min' => 'password/ Debe contener al menos 8 carácteres',
+            'password.confirmed' => 'password-confirm/ Las contraseñas no coinciden'          
         ]
     );
     }
@@ -92,7 +93,8 @@ class RegisterController extends Controller
             'name' => $data['name'],            
             'email' => $data['email'],
             'phone' => $data['phone'],
-            'rut' => $data['rut'],
+
+            // 'rut' => $data['rut'],
             'password' => bcrypt($data['password'])
         ]);
         

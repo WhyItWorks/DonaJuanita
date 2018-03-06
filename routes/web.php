@@ -12,10 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/Panel de control', 'HomeController@index')->name('home');

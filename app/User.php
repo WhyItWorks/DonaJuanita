@@ -26,4 +26,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getFirstNameAttribute(){
+        
+        $name = $this->name;
+        $first_name_pos = strpos($name, ' ');
+        if($first_name_pos > 0){
+            $first_name = substr($name, 0, $first_name_pos);        
+        }else{
+            $first_name = $name;
+        }        
+        return $first_name;
+        
+    }
+
 }

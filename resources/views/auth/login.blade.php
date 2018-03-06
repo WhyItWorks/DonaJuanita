@@ -1,48 +1,28 @@
-@extends('layouts.app') @section('body','login-page sidebar-collapse') @section('content')
-
-<div class="page-header">
-	<div class="page-header-image" style="background-image:url( {{ asset('img/login.jpg') }} )"></div>
+@extends('layouts.app') 
+@section('title', 'Iniciar sesión - '.config('app.name'))
+@section('body','bg-login')
+@section('content')	
 	<div class="container">
-
-		<div class="col-md-4 content-center">
-			<div class="card card-login card-plain">
-				<form class="form-horizontal" method="POST" action="{{ route('login') }}">
+		<div class="row pt-5">
+			<div class="mx-auto py-5 border-primary col-12 col-md-8 col-lg-4 grey lighten-3 box-shadow">
+				<form id="login-form" class="login-register-form ajax-form" role="form" method="post" action="{{ route( 'login') }} ">
 					{{ csrf_field() }}
-					<div class="content">
-						<div class="input-group form-group-no-border input-lg">
-							<span class="input-group-addon">
-								<i class="now-ui-icons ui-1_email-85"></i>
-							</span>
-							<input id="email" class="form-control" placeholder="Email" type="email" name="email" required>
-						</div>
-						<div class="input-group form-group-no-border input-lg">
-							<span class="input-group-addon">
-								<i class="now-ui-icons ui-1_lock-circle-open"></i>
-							</span>
-							<input id="password" type="password" class="form-control" placeholder="Contraseña" name="password" required>
-						</div>
+					<h1 class=" text-center mb-5">Inicia sesión</h1>
+					<div class="md-form form-sm">							
+						<i class="fa fa-envelope prefix" aria-hidden="true"></i>
+						<input id="email" name="email" type="email" class="form-control" required>
+						<label for="email">Correo</label>
 					</div>
-					<div class="pull-right ">
-						<h6>
-							<input type="checkbox" name="remember" {{ old( 'remember') ? 'checked' : '' }}> Recuérdame
-						</h6>
+					<div class="md-form form-sm">
+						<i class="fa fa-key prefix" aria-hidden="true"></i>
+						<input id="password" name="password" type="password" class="form-control" required>
+						<label for="password">Contraseña</label>
 					</div>
-					<div class="footer text-center">
-						<button type="submit" class="btn btn-primary btn-round btn-lg btn-block">
-							Iniciar sesión
-						</button>
-					</div>
-					<div class="pull-left">
-						<h6>
-							<a href="{{ route('register') }}" class="link">Crear nueva cuenta</a>
-						</h6>
+					<div class="text-center">
+						<button type="submit" class="btn teal darken-3">Igresar</button>
 					</div>
 				</form>
 			</div>
 		</div>
-
-
-	</div>
-</div>
-
+	</div>	
 @endsection

@@ -3,63 +3,94 @@
       .view {
           height: 100%;
           overflow-x: hidden;
-      }
-      /* Custom Colors */
-
-      .bg-barossa {
-          background-color: #442A36 !important;
+          
       }
 
-      .bg-cinder {
+      /* General */
+
+      .box-shadow {
+          -webkit-box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
+          box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
+      }
+
+      /* ./General */
+
+      /* Custom Colors bg */
+
+      .bg-login {
+          background: url("../img/login.jpg");
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-attachment: fixed;
+          background-position: center;
+      }
+
+      .bg-silver {
+          background-color: #CCCCCC;
+      }
+
+      .bg-codGrey {
           background-color: #2A2C2D;
       }
 
-      .bg-lochmara {
+      .bg-royalBlue {
           background-color: rgba(45, 124, 214, 0.652);
       }
 
       .bg-tenne {
           background-color: #cb4b06;
       }
-      /* .purple-gradient {
-          background: linear-gradient(40deg, #9021b5b6, #503650ea);
-      } */
+
       /* /.Custom Colors */
+
       /* Navbar */
 
-      .nav__logo {
+      .nav-logo {
           width: 30px !important;
           height: 30px !important;
       }
 
-      .navbar .btn-group .dropdown-menu a:hover {
-          color: #000 !important;
+      .dropdown-toggle::after {
+          display: none;
       }
 
-      .navbar .btn-group .dropdown-menu a:active {
-          color: #fff !important;
+      .nav-item .dropdown-menu a:hover {
+          background-color: #cb4b06;
       }
 
-      .flex-center {
-          color: #fff;
+      .navbar {
+          box-shadow: none !important;
       }
+
+      .navbar-absolute {
+          position: absolute;
+          width: 100%;
+          padding-top: 10px;
+          z-index: 1031;
+      }
+
       /* /.Navbar */
+
       /* Header */
 
-      .header-image {
+      .full-bg-img {
+          height: 100vh;
+          width: 100%;
           overflow: hidden;
           background-repeat: no-repeat !important;
           background-attachment: fixed !important;
           background-size: cover !important;
+          background-position: 10% 50% !important;
           position: relative;
       }
 
-      .header-image::before {
+      .full-bg-img::before {
           content: '';
           display: block;
           position: absolute;
           background-color: #000;
-          opacity: 0.2;
+          opacity: 0.1;
           width: 100%;
           height: 100%;
       }
@@ -69,11 +100,6 @@
           width: 100%;
       }
 
-      .header-register {
-          -webkit-box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
-          -moz-box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
-          box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
-      }
       /* Header inputs */
 
       .header-content label {
@@ -101,8 +127,56 @@
           border-bottom: 1px solid rgb(255, 255, 255);
           box-shadow: 0 1px 0 0 rgb(255, 255, 255);
       }
+
       /* /.Header inputs */
+
       /* /.Header */
+
+      /* Wrapper Conf */
+
+      .wrapper>.header {
+          min-height: 300px;
+          background-position: 0% 20% !important;
+          background-size: cover !important;
+      }
+
+      .header-filter {
+          position: relative;
+      }
+
+      .header-filter::after {
+          position: absolute;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          display: block;
+          left: 0;
+          top: 0;
+          content: "";
+          background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .main {
+          background: #FFFFFF;
+          position: relative;
+          z-index: 3;   
+          min-height: 300px !important;       
+      }
+
+      .main-raised {
+          margin: -60px 30px 0px;
+          border-radius: 6px;
+          box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+       
+      }
+
+      .header-filter .container {
+          z-index: 2;
+          position: relative;
+      }
+
+      /* /.Wrapper Conf */
+
       /* Gallery */
 
       .container.gallery-container {
@@ -144,7 +218,53 @@
               border-radius: 0;
           }
       }
+
       /* /.Gallery */
+
+      /* Login/Register Inputs */
+
+      .login-register-form input[type=email]:focus:not([readonly]),
+      input[type=password]:focus:not([readonly]),
+      input[type=text]:focus:not([readonly]) {
+          border-bottom: 1px solid #1D9580;
+          box-shadow: 0 1px 0 0 #1D9580;
+      }
+
+      .login-register-form input[type=email]:focus:not([readonly])+label,
+      input[type=text]:focus:not([readonly])+label,
+      input[type=password]:focus:not([readonly])+label {
+          color: #1D9580;
+      }
+
+      /* /.Login/Register Inputs */
+
+      /* Form Validations */
+
+      .invalid {
+          color: rgba(249, 99, 50, 0.8) !important;
+      }
+
+      .md-form .prefix {
+          color: black;
+          /* Empty non focus input */
+      }
+
+      .md-form .prefix.active {
+          color: #1D9580;
+          /* */
+      }
+
+      .tooltip-inner {
+          background-color: rgba(249, 99, 50, 0.8);
+          color: white;
+      }
+
+      .tooltip.bs-tooltip-right .arrow:before {
+          border-right-color: rgba(249, 99, 50, 0.8) !important;
+      }
+
+      /* Form Validations */
+
       /* General content */
 
       .img-thumbnail {
@@ -156,9 +276,6 @@
           width: auto;
           max-width: 100%;
           background-color: #f9643269;
-          -webkit-box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
-          -moz-box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
-          box-shadow: 2px 10px 16px 1px rgba(0, 0, 0, 0.75);
       }
 
       .blockquote {
@@ -173,8 +290,11 @@
           border-color: #f96332;
           color: #f96332;
       }
+
       /* /.General content */
-      /* Footer inputs */
+
+      /* Footer */
+ 
 
       footer textarea[type=text]:focus:not([readonly])+label,
       footer input[type=email]:focus:not([readonly])+label,
@@ -188,4 +308,5 @@
           border-bottom: 1px solid rgb(0, 200, 81);
           box-shadow: 0 1px 0 0 rgb(0, 200, 81);
       }
+
       /* /.Footer */
